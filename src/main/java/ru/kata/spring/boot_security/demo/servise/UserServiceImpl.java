@@ -48,24 +48,26 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void updateUser(User user) {
+    public boolean updateUser(User user) {
         if (!user.getPassword().equals(getUser(user.getId()).getPassword())) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
 
         userRepository.save(user);
+        return false;
     }
 
     @Override
     @Transactional
-    public void deleteUser(long id) {
+    public boolean deleteUser(long id) {
         userRepository.deleteById(id);
+        return false;
     }
 
     @Override
     @Transactional
     public void addInitUsers() {
-        User admin = new User("ADMIN" , "ADMIN", "admin@gmail.com", "ADMIN", "ADMIN");
+        User admin = new User("ADMIN", "ADMIN", "admin@gmail.com", "ADMIN", "ADMIN");
 
         Role adminRole = new Role("ROLE_ADMIN");
         Role userRole = new Role("ROLE_USER");
@@ -90,4 +92,3 @@ public class UserServiceImpl implements UserService {
         return userRepository.getByUsername(s);
     }
 }
-

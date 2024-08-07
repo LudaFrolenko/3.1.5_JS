@@ -118,7 +118,7 @@ public class User implements UserDetails {
         this.name = name;
     }
 
-    public String getLastName() {
+    public String getLastname() {
         return lastName;
     }
 
@@ -178,11 +178,13 @@ public class User implements UserDetails {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
         User user = (User) o;
-        return getId() == user.getId() && getName().equals(user.getName()) && getLastName().equals(user.getLastName()) && getEmail().equals(user.getEmail()) && getUsername().equals(user.getUsername()) && getPassword().equals(user.getPassword()) && getRoles().equals(user.getRoles());
+        return getId() == user.getId() && getName().equals(user.getName()) && getLastname().equals(user.getLastname()) && getEmail().equals(user.getEmail()) && getUsername().equals(user.getUsername()) && getPassword().equals(user.getPassword()) && getRoles().equals(user.getRoles());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getLastName(), getEmail(), getUsername(), getPassword(), getRoles());
+        return Objects.hash(getId(), getName(), getLastname(), getEmail(), getUsername(), getPassword(), getRoles());
     }
+
+
 }

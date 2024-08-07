@@ -11,7 +11,7 @@ import javax.annotation.PostConstruct;
 @Controller
 public class LoginController {
 
-    private final UserService userService;
+    private UserService userService;
 
     @Autowired
     public LoginController(UserService userService) {

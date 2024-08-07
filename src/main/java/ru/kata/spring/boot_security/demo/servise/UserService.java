@@ -15,12 +15,13 @@ public interface UserService extends UserDetailsService {
 
     User getUser(long id);
 
-    void updateUser(User user);
+    boolean updateUser(User user);
 
-    void deleteUser(long id);
+    boolean deleteUser(long id);
 
     void addInitUsers();
 
     @Override
     UserDetails loadUserByUsername(String s) throws UsernameNotFoundException;
 }
+

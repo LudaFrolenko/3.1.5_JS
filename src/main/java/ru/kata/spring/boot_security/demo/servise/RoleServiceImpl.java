@@ -19,19 +19,9 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    @Transactional
-    public List<Role> getAllRoles() {
-        return roleRepository.findAll();
+    public Role getByRoleName(String name) {
+        return roleRepository.getByRoleName(name);
     }
-
-
-    @Override
-    @Transactional
-    public Role getRole(long id) {
-        return roleRepository.getById(id);
-    }
-
-
 
 
 }

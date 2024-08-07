@@ -10,20 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import ru.kata.spring.boot_security.demo.servise.UserService;
 
 @Controller
-@RequestMapping("/user")
 public class UserController {
 
-    private final UserService userService;
+    private UserService userService;
 
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @GetMapping
+    @GetMapping("/user")
     public String printUsers(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("user" , userService.loadUserByUsername(auth.getName()));
+        model.addAttribute("user", userService.loadUserByUsername(auth.getName()));
 
         return "/user";
     }
